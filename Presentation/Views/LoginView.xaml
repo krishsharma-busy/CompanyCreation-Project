@@ -1,0 +1,57 @@
+<UserControl x:Class="Presentation.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Presentation.ViewModels">
+    <UserControl.DataContext>
+        <vm:LoginViewModel />
+    </UserControl.DataContext>
+
+    <Grid Background="{StaticResource PageBackground}">
+        <Border Style="{StaticResource FormCardStyle}" 
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                MaxWidth="400">
+            <StackPanel>
+                <TextBlock Text="Login" 
+                           Style="{StaticResource PageTitleStyle}"
+                           Margin="0,0,0,24"/>
+
+                <TextBlock Text="Username" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource ModernTextBox}"/>
+
+                <TextBlock Text="Password" Style="{StaticResource FormLabelStyle}"/>
+                <Grid Margin="0,0,0,16">
+                    <!-- Password Box (Hidden) -->
+                    <PasswordBox x:Name="PasswordBox"
+                                 Style="{StaticResource ModernPasswordBox}"
+                                 PasswordChanged="PasswordBox_PasswordChanged"
+                                 Margin="0"/>
+                    
+                    <!-- Text Box (Visible) -->
+                    <TextBox x:Name="VisiblePasswordBox"
+                             Style="{StaticResource ModernTextBox}"
+                             Visibility="Collapsed"
+                             TextChanged="VisiblePasswordBox_TextChanged"
+                             Margin="0"/>
+
+                    <!-- Toggle Button (Eye) -->
+                    <Button x:Name="TogglePasswordButton"
+                            Style="{StaticResource EyeButtonStyle}"
+                            Click="TogglePassword_Click"
+                            HorizontalAlignment="Right" VerticalAlignment="Center"
+                            Margin="0,0,12,0"
+                            Content="👁"/>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Button Content="Login" Command="{Binding LoginCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Width="140" Margin="0,0,12,0"/>
+                    <Button Content="Back" Command="{Binding BackCommand}"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            Width="140"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

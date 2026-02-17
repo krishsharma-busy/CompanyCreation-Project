@@ -1,0 +1,44 @@
+<UserControl x:Class="Presentation.Views.CreateCompanyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Presentation.ViewModels">
+    <UserControl.DataContext>
+        <vm:CreateCompanyViewModel />
+    </UserControl.DataContext>
+
+    <Grid Background="{StaticResource PageBackground}">
+        <Border Style="{StaticResource FormCardStyle}" 
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock Text="Create Company" 
+                           Style="{StaticResource PageTitleStyle}"
+                           Margin="0,0,0,24"/>
+
+                <TextBlock Text="Company Name *" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource ModernTextBox}"/>
+
+                <TextBlock Text="GSTIN" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding Gstin, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource ModernTextBox}" MaxLength="15"/>
+
+                <TextBlock Text="Country" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding Country, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource ModernTextBox}"/>
+
+                <TextBlock Text="State" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding State, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource ModernTextBox}"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Button Content="Save" Command="{Binding SaveCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Width="140" Margin="0,0,12,0"/>
+                    <Button Content="Back" Command="{Binding BackCommand}"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            Width="140"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

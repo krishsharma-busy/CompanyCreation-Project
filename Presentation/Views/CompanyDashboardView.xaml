@@ -1,0 +1,39 @@
+<UserControl x:Class="Presentation.Views.CompanyDashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Presentation.ViewModels">
+    <UserControl.DataContext>
+        <vm:CompanyDashboardViewModel />
+    </UserControl.DataContext>
+
+    <Grid Background="{StaticResource PageBackground}">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="400">
+            <TextBlock Text="Company Dashboard" 
+                       Style="{StaticResource PageTitleStyle}"
+                       Margin="0,0,0,30"/>
+
+            <!-- 2x2 Grid of Buttons -->
+            <UniformGrid Rows="2" Columns="2" Margin="0,0,0,20">
+                <Button Content="Create Account" Command="{Binding CreateAccountCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Margin="4" Height="50"/>
+
+                <Button Content="Create User" Command="{Binding CreateUserCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Margin="4" Height="50"/>
+
+                <Button Content="Load Accounts" Command="{Binding LoadAccountCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Margin="4" Height="50"/>
+
+                <Button Content="Load Users" Command="{Binding LoadUserCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Margin="4" Height="50"/>
+            </UniformGrid>
+
+            <Button Content="Close Company" Command="{Binding CloseCompanyCommand}"
+                    Style="{StaticResource DangerButtonStyle}"
+                    HorizontalAlignment="Stretch" Margin="4,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

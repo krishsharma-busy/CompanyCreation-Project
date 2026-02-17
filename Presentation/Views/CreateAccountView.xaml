@@ -1,0 +1,40 @@
+<UserControl x:Class="Presentation.Views.CreateAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Presentation.ViewModels">
+    <UserControl.DataContext>
+        <vm:CreateAccountViewModel />
+    </UserControl.DataContext>
+
+    <Grid Background="{StaticResource PageBackground}">
+        <Border Style="{StaticResource FormCardStyle}" 
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock Text="Create Account" 
+                           Style="{StaticResource PageTitleStyle}"
+                           Margin="0,0,0,24"/>
+
+                <TextBlock Text="Account Name *" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource ModernTextBox}"/>
+
+                <TextBlock Text="Group" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding Group, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource ModernTextBox}"/>
+
+                <TextBlock Text="Balance" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox Text="{Binding BalanceText, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource ModernTextBox}"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Button Content="Save" Command="{Binding SaveCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Width="140" Margin="0,0,12,0"/>
+                    <Button Content="Back" Command="{Binding BackCommand}"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            Width="140"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
