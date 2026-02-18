@@ -1,3 +1,49 @@
+# Company Creation Project (Onion Architecture)
+
+This is a WPF application for managing Companies, Users, and Accounts, built using the **Onion Architecture** pattern to ensure modularity and maintainability. It uses **Entity Framework 6 (EF6)** with a Code-First (Fluent API) approach for data access.
+
+## Getting Started
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+- **Visual Studio 2022** (with .NET Desktop Development workload)
+- **.NET Framework 4.8**
+- **SQL Server Express** (or any SQL Server instance)
+- **Git**
+
+### 1. Clone the Repository
+Open your terminal or command prompt and run:
+```powershell
+git clone https://github.com/krishsharma-busy/CompanyCreation-Project.git
+cd CompanyCreation-Project
+```
+
+### 2. Database Setup
+1. Open **SQL Server Management Studio (SSMS)**.
+2. Connect to your SQL Server instance.
+3. Run a script to create the `COMPANYPROJECT` database and required tables (`Company`, `User`, `Account`).
+
+### 3. Configure Connection String
+1. Open the solution `CompanyProject.slnx` in Visual Studio.
+2. Open `Presentation/App.config`.
+3. Update the `connectionString` to match your local SQL Server instance:
+   ```xml
+   <connectionStrings>
+     <add name="CompanyDB" 
+          connectionString="Data Source=YOUR_SERVER_NAME;Initial Catalog=COMPANYPROJECT;Integrated Security=True;" 
+          providerName="System.Data.SqlClient" />
+   </connectionStrings>
+   ```
+   *(Replace `YOUR_SERVER_NAME` with your actual server name, e.g., `.\SQLEXPRESS` or `(localdb)\MSSQLLocalDB`)*.
+
+### 4. Build and Run
+1. In Visual Studio, right-click the **Presentation** project in Solution Explorer and select **Set as Startup Project**.
+2. Press **Ctrl+Shift+B** to build the solution (this will restore NuGet packages).
+3. Press **F5** to run the application.
+
+---
+
 # Project Architecture
 
 This WPF application follows the **Onion Architecture** pattern to ensure modularity, scalability, and loose coupling.
